@@ -1,0 +1,99 @@
+.footer {
+  background: var(--forest-dark);
+  color: var(--tan-light);
+  border-top: 3px solid var(--gold);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr;
+  gap: 3rem;
+  padding: 3.5rem 1.5rem 2.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.footer-brand {
+  .footer-logo {
+    width: 36px;
+    height: 36px;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-name {
+    font-family: 'Special Elite', cursive;
+    font-size: 1.6rem;
+    color: var(--cream);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+    color: var(--tan-mid);
+    font-style: italic;
+    line-height: 1.5;
+  }
+}
+
+.footer-links {
+  h4 {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.95rem;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: 0.5rem;
+
+      a {
+        color: var(--tan-light);
+        font-size: 0.88rem;
+        transition: color 0.2s;
+
+        &:hover {
+          color: var(--gold-light);
+        }
+      }
+    }
+  }
+}
+
+.footer-motto {
+  blockquote {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--tan-mid);
+    line-height: 1.7;
+    border-left: 3px solid var(--gold);
+    padding-left: 1.2rem;
+    margin-top: 0.5rem;
+  }
+}
+
+.footer-bottom {
+  background: rgba(0,0,0,0.3);
+  padding: 0.9rem 1.5rem;
+
+  .container {
+    display: flex;
+    justify-content: center;
+
+    span {
+      font-size: 0.78rem;
+      color: var(--tan-dark);
+      letter-spacing: 0.04em;
+    }
+  }
+}

@@ -1,0 +1,114 @@
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <a routerLink="/" class="breadcrumb">← Inicio</a>
+    <div class="page-hero-inner">
+      <span class="page-icon">🔥</span>
+      <div>
+        <span class="badge-chip">Área de conocimiento</span>
+        <h1>Supervivencia</h1>
+        <p>Técnicas esenciales para mantenerse vivo y en movimiento cuando el terreno lo exige.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="container">
+    <h2 class="section-title">Los cuatro pilares</h2>
+    <p class="section-sub">En cualquier situación de supervivencia, estas son las prioridades en orden de urgencia.</p>
+    <div class="pillars-grid">
+      @for (p of pillars; track p.title) {
+        <div class="pillar-card">
+          <div class="pillar-number">{{ p.num }}</div>
+          <div class="pillar-icon">{{ p.icon }}</div>
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.desc }}</p>
+          <ul>
+            @for (tip of p.tips; track tip) {
+              <li>{{ tip }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- RULE OF THREE -->
+<section class="rule-section">
+  <div class="container">
+    <div class="rule-inner">
+      <div class="rule-text">
+        <span class="badge-chip">Regla fundamental</span>
+        <h2>La Regla del Tres</h2>
+        <div class="rule-items">
+          @for (r of ruleOfThree; track r.label) {
+            <div class="rule-item">
+              <span class="rule-time">{{ r.time }}</span>
+              <span class="rule-sep">sin</span>
+              <span class="rule-label">{{ r.label }}</span>
+            </div>
+          }
+        </div>
+        <p class="rule-note">
+          Esta regla simplifica la toma de decisiones bajo presión.
+          Siempre atendé primero lo que te mata antes.
+        </p>
+      </div>
+      <div class="rule-deco">
+        <div class="triangle-deco">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="100,10 190,175 10,175" stroke="var(--forest-mid)" stroke-width="3" fill="rgba(45,90,27,0.05)"/>
+            <text x="100" y="80" text-anchor="middle" font-size="11" fill="var(--forest-mid)" font-family="Open Sans,sans-serif" font-weight="700">ACTITUD</text>
+            <text x="100" y="110" text-anchor="middle" font-size="11" fill="var(--forest-mid)" font-family="Open Sans,sans-serif">MENTALIDAD</text>
+            <text x="100" y="140" text-anchor="middle" font-size="9" fill="var(--text-light)" font-family="Open Sans,sans-serif">La base de todo</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIRE SECTION -->
+<section class="topic-section alt">
+  <div class="container">
+    <div class="topic-inner">
+      <div class="topic-header">
+        <span class="topic-icon">🔥</span>
+        <div>
+          <span class="badge-chip">Técnica</span>
+          <h2>Hacer Fuego</h2>
+        </div>
+      </div>
+      <p class="topic-intro">
+        El fuego es calor, luz, seguridad y moral. Aprender a hacerlo con distintos métodos
+        y en distintas condiciones es una habilidad que se practica, no se improvisa.
+      </p>
+      <div class="methods-grid">
+        @for (m of fireMethods; track m.name) {
+          <div class="method-card">
+            <h4>{{ m.name }}</h4>
+            <span class="difficulty" [class]="m.level">{{ m.levelLabel }}</span>
+            <p>{{ m.desc }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON NOTICE -->
+<section class="more-coming">
+  <div class="container">
+    <div class="coming-inner">
+      <span class="coming-icon">📖</span>
+      <div>
+        <h3>Más contenido en camino</h3>
+        <p>Se irán agregando guías detalladas sobre construcción de refugios, purificación del agua,
+           señalización, orientación sin instrumentos y mucho más.</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Open+Sans:wght@300;400;600;700&family=Special+Elite&display=swap');
+
+:root {
+  --forest-dark: #1e3a0f;
+  --forest-mid: #2d5a1b;
+  --forest-light: #4a7c2f;
+  --forest-pale: #6a9e4f;
+  --earth-dark: #3d2008;
+  --earth-mid: #6b3f1a;
+  --earth-light: #9b6235;
+  --earth-pale: #c49060;
+  --tan-dark: #8a7355;
+  --tan-mid: #c4a882;
+  --tan-light: #e8d8bc;
+  --cream: #f5f0e6;
+  --cream-dark: #ede5d4;
+  --gold: #c4860a;
+  --gold-light: #e8a820;
+  --text-dark: #2a1f12;
+  --text-mid: #4a3c2a;
+  --text-light: #7a6a55;
+  --white: #faf8f4;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Merriweather', serif;
+  line-height: 1.3;
+  color: var(--text-dark);
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-title {
+  font-family: 'Special Elite', cursive;
+  font-size: 2rem;
+  color: var(--forest-dark);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 3px;
+    background: var(--gold);
+    margin-top: 0.4rem;
+  }
+}
+
+.badge-chip {
+  display: inline-block;
+  background: var(--forest-mid);
+  color: var(--cream);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--forest-mid);
+  color: var(--cream);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--forest-mid);
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: var(--forest-dark);
+    border-color: var(--forest-dark);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--cream);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--cream);
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+  }
+}
+
+/* WIP pages shared styles */
+.wip-page {
+  .wip-hero {
+    background: linear-gradient(160deg, #1a3510 0%, #2d4a1a 50%, #1a2a0e 100%);
+    padding: 8rem 0 4rem;
+    border-bottom: 3px solid var(--gold);
+
+    .breadcrumb {
+      display: inline-block;
+      color: var(--tan-mid);
+      font-size: 0.82rem;
+      margin-bottom: 1.5rem;
+      transition: color 0.2s;
+      &:hover { color: var(--gold-light); }
+    }
+  }
+
+  .wip-hero-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+
+    .page-icon { font-size: 3.5rem; line-height: 1; margin-top: 0.2rem; }
+
+    h1 {
+      font-family: 'Special Elite', cursive;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--cream);
+      margin: 0.4rem 0 0.6rem;
+    }
+
+    p { color: var(--tan-light); font-size: 1.05rem; max-width: 550px; }
+  }
+
+  .wip-body {
+    padding: 6rem 0;
+    background: var(--cream);
+  }
+
+  .wip-card {
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--white);
+    border: 1.5px solid var(--tan-light);
+    border-top: 4px solid var(--gold);
+    padding: 3rem 2.5rem;
+    border-radius: 3px;
+    text-align: center;
+
+    .wip-icon-wrap {
+      width: 100px;
+      margin: 0 auto 1.5rem;
+    }
+
+    h2 {
+      font-family: 'Special Elite', cursive;
+      font-size: 1.5rem;
+      color: var(--forest-dark);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--text-mid);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .wip-topics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+
+      span {
+        background: rgba(45, 90, 27, 0.08);
+        border: 1px solid rgba(45, 90, 27, 0.2);
+        color: var(--forest-mid);
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 0.3rem 0.75rem;
+        border-radius: 2px;
+      }
+    }
+  }
+}

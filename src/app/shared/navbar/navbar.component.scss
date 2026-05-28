@@ -1,0 +1,136 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(30, 58, 15, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid transparent;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+
+  &.scrolled {
+    background: rgba(20, 40, 10, 0.97);
+    border-bottom-color: var(--gold);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--cream);
+  font-family: 'Special Elite', cursive;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--gold-light);
+  }
+
+  .brand-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--gold);
+  }
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
+  align-items: center;
+
+  li a {
+    color: var(--tan-light);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.7rem;
+    border-radius: 2px;
+    transition: color 0.2s, background 0.2s;
+    display: block;
+
+    &:hover,
+    &.active {
+      color: var(--gold-light);
+      background: rgba(255,255,255,0.06);
+    }
+
+    &.active {
+      border-bottom: 2px solid var(--gold);
+    }
+  }
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+
+  span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--cream);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  &.open {
+    span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+}
+
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(20, 40, 10, 0.98);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 1rem 0;
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.3s ease;
+    pointer-events: none;
+
+    &.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    li a {
+      padding: 0.85rem 2rem;
+      border-radius: 0;
+      border-bottom: none !important;
+      border-left: 3px solid transparent;
+
+      &:hover, &.active {
+        border-left-color: var(--gold);
+        background: rgba(255,255,255,0.05);
+      }
+    }
+  }
+}
