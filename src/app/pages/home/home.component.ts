@@ -47,7 +47,7 @@ export class HomeComponent {
     },
     {
       icon: '🍳',
-      title: 'Cocina al Fuego',
+      title: 'Cocina y Fogón',
       desc: 'Recetas y técnicas de cocción al aire libre con lo mínimo y máximo sabor.',
       path: '/cocina',
       wip: true

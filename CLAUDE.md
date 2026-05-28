@@ -17,7 +17,7 @@ Web Angular sobre supervivencia, campismo y artes al aire libre. Estética "scou
 | `/navegacion` | NavegacionComponent | En construcción |
 | `/nudos` | NudosComponent | En construcción |
 | `/primeros-auxilios` | PrimerosAuxiliosComponent | En construcción |
-| `/cocina` | CocinaComponent | En construcción |
+| `/cocina` | CocinaComponent — "Cocina y Fogón" | En construcción |
 
 ## Estructura de carpetas
 ```
