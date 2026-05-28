@@ -13,102 +13,296 @@
   </div>
 </section>
 
-<!-- PILLARS -->
-<section class="pillars">
+<!-- TAB BAR -->
+<nav class="page-tabs">
   <div class="container">
-    <h2 class="section-title">Los cuatro pilares</h2>
-    <p class="section-sub">En cualquier situación de supervivencia, estas son las prioridades en orden de urgencia.</p>
-    <div class="pillars-grid">
-      @for (p of pillars; track p.title) {
-        <div class="pillar-card">
-          <div class="pillar-number">{{ p.num }}</div>
-          <div class="pillar-icon">{{ p.icon }}</div>
-          <h3>{{ p.title }}</h3>
-          <p>{{ p.desc }}</p>
-          <ul>
-            @for (tip of p.tips; track tip) {
-              <li>{{ tip }}</li>
-            }
-          </ul>
-        </div>
-      }
+    <div class="tabs-row">
+      <button class="page-tab" [class.active]="activeTab() === 'supervivencia'" (click)="activeTab.set('supervivencia')">🔥 Supervivencia</button>
+      <button class="page-tab" [class.active]="activeTab() === 'botanica'"     (click)="activeTab.set('botanica')">🌿 Botánica</button>
+      <button class="page-tab" [class.active]="activeTab() === 'meteorologia'" (click)="activeTab.set('meteorologia')">🌦️ Meteorología</button>
     </div>
   </div>
-</section>
+</nav>
 
-<!-- RULE OF THREE -->
-<section class="rule-section">
-  <div class="container">
-    <div class="rule-inner">
-      <div class="rule-text">
-        <span class="badge-chip">Regla fundamental</span>
-        <h2>La Regla del Tres</h2>
-        <div class="rule-items">
-          @for (r of ruleOfThree; track r.label) {
-            <div class="rule-item">
-              <span class="rule-time">{{ r.time }}</span>
-              <span class="rule-sep">sin</span>
-              <span class="rule-label">{{ r.label }}</span>
-            </div>
-          }
-        </div>
-        <p class="rule-note">
-          Esta regla simplifica la toma de decisiones bajo presión.
-          Siempre atendé primero lo que te mata antes.
-        </p>
-      </div>
-      <div class="rule-deco">
-        <div class="triangle-deco">
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="100,10 190,175 10,175" stroke="var(--forest-mid)" stroke-width="3" fill="rgba(45,90,27,0.05)"/>
-            <text x="100" y="80" text-anchor="middle" font-size="11" fill="var(--forest-mid)" font-family="Open Sans,sans-serif" font-weight="700">ACTITUD</text>
-            <text x="100" y="110" text-anchor="middle" font-size="11" fill="var(--forest-mid)" font-family="Open Sans,sans-serif">MENTALIDAD</text>
-            <text x="100" y="140" text-anchor="middle" font-size="9" fill="var(--text-light)" font-family="Open Sans,sans-serif">La base de todo</text>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ═══════════════ SUPERVIVENCIA ═══════════════ -->
+@if (activeTab() === 'supervivencia') {
 
-<!-- FIRE SECTION -->
-<section class="topic-section alt">
-  <div class="container">
-    <div class="topic-inner">
-      <div class="topic-header">
-        <span class="topic-icon">🔥</span>
-        <div>
-          <span class="badge-chip">Técnica</span>
-          <h2>Hacer Fuego</h2>
-        </div>
-      </div>
-      <p class="topic-intro">
-        El fuego es calor, luz, seguridad y moral. Aprender a hacerlo con distintos métodos
-        y en distintas condiciones es una habilidad que se practica, no se improvisa.
-      </p>
-      <div class="methods-grid">
-        @for (m of fireMethods; track m.name) {
-          <div class="method-card">
-            <h4>{{ m.name }}</h4>
-            <span class="difficulty" [class]="m.level">{{ m.levelLabel }}</span>
-            <p>{{ m.desc }}</p>
+  <section class="pillars">
+    <div class="container">
+      <h2 class="section-title">Los cuatro pilares</h2>
+      <p class="section-sub">En cualquier situación de supervivencia, estas son las prioridades en orden de urgencia.</p>
+      <div class="pillars-grid">
+        @for (p of pillars; track p.title) {
+          <div class="pillar-card">
+            <div class="pillar-number">{{ p.num }}</div>
+            <div class="pillar-icon">{{ p.icon }}</div>
+            <h3>{{ p.title }}</h3>
+            <p>{{ p.desc }}</p>
+            <ul>
+              @for (tip of p.tips; track tip) {
+                <li>{{ tip }}</li>
+              }
+            </ul>
           </div>
         }
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- COMING SOON NOTICE -->
-<section class="more-coming">
-  <div class="container">
-    <div class="coming-inner">
-      <span class="coming-icon">📖</span>
-      <div>
-        <h3>Más contenido en camino</h3>
-        <p>Se irán agregando guías detalladas sobre construcción de refugios, purificación del agua,
-           señalización, orientación sin instrumentos y mucho más.</p>
+  <section class="rule-section">
+    <div class="container">
+      <div class="rule-inner">
+        <div class="rule-text">
+          <span class="badge-chip">Regla fundamental</span>
+          <h2>La Regla del Tres</h2>
+          <div class="rule-items">
+            @for (r of ruleOfThree; track r.label) {
+              <div class="rule-item">
+                <span class="rule-time">{{ r.time }}</span>
+                <span class="rule-sep">sin</span>
+                <span class="rule-label">{{ r.label }}</span>
+              </div>
+            }
+          </div>
+          <p class="rule-note">Esta regla simplifica la toma de decisiones bajo presión. Siempre atendé primero lo que te mata antes.</p>
+        </div>
+        <div class="rule-deco">
+          <div class="triangle-deco">
+            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="100,10 190,175 10,175" stroke="var(--forest-mid)" stroke-width="3" fill="rgba(45,90,27,0.05)"/>
+              <text x="100" y="80"  text-anchor="middle" font-size="11" fill="var(--forest-mid)" font-family="Open Sans,sans-serif" font-weight="700">ACTITUD</text>
+              <text x="100" y="110" text-anchor="middle" font-size="11" fill="var(--forest-mid)" font-family="Open Sans,sans-serif">MENTALIDAD</text>
+              <text x="100" y="140" text-anchor="middle" font-size="9"  fill="var(--text-light)"  font-family="Open Sans,sans-serif">La base de todo</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="topic-section alt">
+    <div class="container">
+      <div class="topic-inner">
+        <div class="topic-header">
+          <span class="topic-icon">🔥</span>
+          <div>
+            <span class="badge-chip">Técnica</span>
+            <h2>Hacer Fuego</h2>
+          </div>
+        </div>
+        <p class="topic-intro">
+          El fuego es calor, luz, seguridad y moral. Aprender a hacerlo con distintos métodos
+          y en distintas condiciones es una habilidad que se practica, no se improvisa.
+        </p>
+        <div class="methods-grid">
+          @for (m of fireMethods; track m.name) {
+            <div class="method-card">
+              <h4>{{ m.name }}</h4>
+              <span class="difficulty" [class]="m.level">{{ m.levelLabel }}</span>
+              <p>{{ m.desc }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="more-coming">
+    <div class="container">
+      <div class="coming-inner">
+        <span class="coming-icon">📖</span>
+        <div>
+          <h3>Más contenido en camino</h3>
+          <p>Se irán agregando guías sobre construcción de refugios, purificación del agua, señalización y orientación sin instrumentos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+}
+
+<!-- ═══════════════ BOTÁNICA ═══════════════ -->
+@if (activeTab() === 'botanica') {
+
+  <div class="critical-warning">
+    <div class="container">
+      <div class="warning-inner">
+        <span class="warning-icon">⚠️</span>
+        <div>
+          <strong>Regla fundamental: la duda mata.</strong>
+          Si no podés identificar una planta con absoluta certeza, no la consumas.
+          Esta guía es un punto de partida — la identificación segura requiere práctica con un experto.
+        </div>
       </div>
     </div>
   </div>
-</section>
+
+  <section class="rules-section">
+    <div class="container">
+      <h2 class="section-title">Antes de comer cualquier planta</h2>
+      <p class="section-sub">Seguir estas reglas puede marcar la diferencia entre un recurso y una emergencia médica.</p>
+      <div class="id-rules">
+        <div class="id-rule"><span class="rule-icon">👁️</span><h4>Identificá con tres criterios</h4><p>Forma de la hoja, estructura de la flor o fruto, y hábitat. Un criterio solo no alcanza nunca.</p></div>
+        <div class="id-rule"><span class="rule-icon">👃</span><h4>Usá todos los sentidos</h4><p>Olfato, textura y aspecto general. Muchas plantas tóxicas tienen olor desagradable al frotar.</p></div>
+        <div class="id-rule"><span class="rule-icon">📍</span><h4>Considerá el hábitat</h4><p>El entorno donde crece es parte de su identificación. Una planta fuera de su hábitat habitual es señal de alerta.</p></div>
+        <div class="id-rule"><span class="rule-icon">🚫</span><h4>Señales de alarma</h4><p>Sabor amargo intenso, olor desagradable, látex blanco, espinas, frutos muy brillantes — precaución, no certezas.</p></div>
+        <div class="id-rule"><span class="rule-icon">📚</span><h4>Llevá una guía regional</h4><p>Conocer 10 plantas de tu zona vale más que 100 de todo el mundo.</p></div>
+        <div class="id-rule"><span class="rule-icon">🍽️</span><h4>Prueba de seguridad universal</h4><p>Aplicá en labio, esperar 15 min. Si hay ardor, descartá. Solo masticá sin tragar, esperar 15 min más. Recién entonces consumí una porción mínima y esperá 8 horas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-section">
+    <div class="container">
+      <h2 class="section-title">Catálogo de plantas</h2>
+      <p class="section-sub">{{ plants.length }} plantas documentadas. Filtrá por categoría o buscá por nombre.</p>
+
+      <div class="catalog-controls">
+        <div class="filter-tabs">
+          @for (f of filters; track f.id) {
+            <button class="filter-tab" [class.active]="activeFilter() === f.id" (click)="activeFilter.set(f.id)">
+              {{ f.icon }} {{ f.label }}
+            </button>
+          }
+        </div>
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Buscar planta..."
+                 [ngModel]="searchQuery()" (ngModelChange)="searchQuery.set($event)" />
+        </div>
+      </div>
+
+      @if (visiblePlants().length === 0) {
+        <div class="no-results"><span>🌵</span><p>No se encontraron plantas con ese criterio.</p></div>
+      }
+
+      <div class="plants-grid">
+        @for (plant of visiblePlants(); track plant.name) {
+          <div class="plant-card" [class]="'card-' + plant.category">
+            <div class="plant-header">
+              <span class="plant-emoji">{{ plant.icon }}</span>
+              <div class="plant-title">
+                <h3>{{ plant.name }}</h3>
+                <span class="plant-scientific">{{ plant.scientific }}</span>
+              </div>
+              <span class="plant-tag" [class]="categoryClass[plant.category]">{{ categoryLabel[plant.category] }}</span>
+            </div>
+            <p class="plant-habitat"><span class="habitat-label">🗺 Hábitat:</span> {{ plant.habitat }}</p>
+            <p class="plant-desc">{{ plant.description }}</p>
+            <div class="plant-use">
+              <span class="use-label">@if (plant.category === 'peligrosa') { ⛔ Uso: } @else { ✅ Uso: }</span>
+              {{ plant.use }}
+            </div>
+            <div class="plant-parts">
+              @for (part of plant.parts; track part) {
+                <span class="part-chip">{{ part }}</span>
+              }
+            </div>
+            @if (plant.warning) {
+              <div class="plant-warning"><span>⚠️</span><p>{{ plant.warning }}</p></div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- ═══════════════ METEOROLOGÍA ═══════════════ -->
+@if (activeTab() === 'meteorologia') {
+
+  <section class="intro-section">
+    <div class="container">
+      <div class="intro-inner">
+        <div class="intro-text">
+          <h2 class="section-title">El tiempo como herramienta</h2>
+          <p>Un buen observador puede anticipar cambios climáticos con 6 a 48 horas de antelación usando solo lo que ve, oye y huele.</p>
+          <p>La meteorología de campo combina lectura de nubes, comportamiento animal, señales vegetales y reglas empíricas probadas por generaciones.</p>
+        </div>
+        <div class="intro-warning">
+          <span class="warn-icon">⚡</span>
+          <div>
+            <h4>Regla de oro: ante la duda, bajá</h4>
+            <p>En montaña, ninguna predicción vale la pena de una tormenta eléctrica. Si el cielo muestra señales ambiguas y estás en altura, la decisión correcta siempre es descender.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clouds-section">
+    <div class="container">
+      <h2 class="section-title">Lectura de nubes</h2>
+      <p class="section-sub">Las nubes son el indicador más visible del estado de la atmósfera. Aprender a identificarlas es la habilidad meteorológica más valiosa en campo.</p>
+      <div class="clouds-grid">
+        @for (c of clouds; track c.name) {
+          <div class="cloud-card" [class]="'card-' + c.danger">
+            <div class="cloud-header">
+              <span class="cloud-icon">{{ c.icon }}</span>
+              <div>
+                <h3>{{ c.name }}</h3>
+                <span class="cloud-alt">{{ c.altitude }}</span>
+              </div>
+              <span class="cloud-tag" [class]="dangerClass[c.danger]">{{ dangerLabel[c.danger] }}</span>
+            </div>
+            <p class="cloud-look"><span class="look-label">Aspecto:</span> {{ c.look }}</p>
+            <div class="cloud-signal">
+              <span class="signal-label">Señal:</span>
+              <p>{{ c.signal }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="wind-section">
+    <div class="container">
+      <h2 class="section-title light">Señales del viento</h2>
+      <p class="section-sub light">El viento comunica cambios antes de que sean visibles en el cielo.</p>
+      <div class="wind-grid">
+        @for (w of windSigns; track w.title) {
+          <div class="wind-card">
+            <span class="wind-icon">{{ w.icon }}</span>
+            <h4>{{ w.title }}</h4>
+            <p>{{ w.desc }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="nature-section">
+    <div class="container">
+      <h2 class="section-title">Señales de la naturaleza</h2>
+      <p class="section-sub">Animales y plantas llevan millones de años adaptados al clima. Sus comportamientos son indicadores confiables cuando se saben leer.</p>
+      <div class="nature-grid">
+        @for (n of natureSigns; track n.title) {
+          <div class="nature-card">
+            <span class="nature-icon">{{ n.icon }}</span>
+            <div>
+              <h4>{{ n.title }}</h4>
+              <p>{{ n.desc }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="meteo-rules-section">
+    <div class="container">
+      <span class="badge-chip">Sabiduría popular verificada</span>
+      <h2 class="rules-title">Reglas del tiempo</h2>
+      <p class="rules-sub">Estas reglas empíricas tienen base meteorológica real. No son infalibles, pero son herramientas útiles cuando no hay otro recurso.</p>
+      <div class="rules-grid">
+        @for (r of rules; track r.num) {
+          <div class="rule-card">
+            <span class="rule-num">{{ r.num }}</span>
+            <h4>{{ r.title }}</h4>
+            <p>{{ r.detail }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}

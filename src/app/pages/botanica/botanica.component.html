@@ -1,0 +1,147 @@
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <a routerLink="/" class="breadcrumb">← Inicio</a>
+    <div class="page-hero-inner">
+      <span class="page-icon">🌿</span>
+      <div>
+        <span class="badge-chip">Área de conocimiento</span>
+        <h1>Botánica Silvestre</h1>
+        <p>Reconocimiento de plantas comestibles, medicinales y peligrosas en entornos naturales de Argentina y la región.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVISO CRÍTICO -->
+<div class="critical-warning">
+  <div class="container">
+    <div class="warning-inner">
+      <span class="warning-icon">⚠️</span>
+      <div>
+        <strong>Regla fundamental: la duda mata.</strong>
+        Si no podés identificar una planta con absoluta certeza, no la consumas. Muchas plantas tóxicas son similares a comestibles.
+        Esta guía es un punto de partida — la identificación segura requiere práctica presencial con un experto.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REGLAS DE IDENTIFICACIÓN -->
+<section class="rules-section">
+  <div class="container">
+    <h2 class="section-title">Antes de comer cualquier planta</h2>
+    <p class="section-sub">Seguir estas reglas puede marcar la diferencia entre un recurso y una emergencia médica.</p>
+    <div class="id-rules">
+      <div class="id-rule">
+        <span class="rule-icon">👁️</span>
+        <h4>Identificá con tres criterios</h4>
+        <p>Forma de la hoja, estructura de la flor o fruto, y hábitat. Un criterio solo no alcanza nunca.</p>
+      </div>
+      <div class="id-rule">
+        <span class="rule-icon">👃</span>
+        <h4>Usá todos los sentidos</h4>
+        <p>Olfato, textura y aspecto general. Muchas plantas tóxicas tienen olor desagradable al frotar.</p>
+      </div>
+      <div class="id-rule">
+        <span class="rule-icon">📍</span>
+        <h4>Considerá el hábitat</h4>
+        <p>El entorno donde crece una planta es parte de su identificación. Una planta fuera de su hábitat habitual es señal de alerta.</p>
+      </div>
+      <div class="id-rule">
+        <span class="rule-icon">🍽️</span>
+        <h4>Prueba de seguridad universal</h4>
+        <p>Aplicá una pequeña cantidad en labio, esperar 15 min. Si hay ardor, descartá. Solo masticá sin tragar, esperar 15 min más. Recién entonces consumí una porción mínima y esperá 8 horas.</p>
+      </div>
+      <div class="id-rule">
+        <span class="rule-icon">🚫</span>
+        <h4>Señales de alarma</h4>
+        <p>Sabor amargo intenso, olor desagradable, látex blanco, espinas, frutos muy brillantes — son señales de precaución, no certezas.</p>
+      </div>
+      <div class="id-rule">
+        <span class="rule-icon">📚</span>
+        <h4>Llevá una guía regional</h4>
+        <p>Las plantas varían por región. Una guía de flora local es más útil que una guía genérica. Conocer 10 plantas de tu zona vale más que 100 de todo el mundo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATÁLOGO -->
+<section class="catalog-section">
+  <div class="container">
+    <h2 class="section-title">Catálogo de plantas</h2>
+    <p class="section-sub">{{ plants.length }} plantas documentadas. Filtrá por categoría o buscá por nombre.</p>
+
+    <!-- FILTROS + BUSCADOR -->
+    <div class="catalog-controls">
+      <div class="filter-tabs">
+        @for (f of filters; track f.id) {
+          <button class="filter-tab" [class.active]="activeFilter() === f.id"
+                  (click)="activeFilter.set(f.id)">
+            {{ f.icon }} {{ f.label }}
+          </button>
+        }
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Buscar planta..."
+               [ngModel]="searchQuery()"
+               (ngModelChange)="searchQuery.set($event)" />
+      </div>
+    </div>
+
+    <!-- RESULTADOS -->
+    @if (visiblePlants().length === 0) {
+      <div class="no-results">
+        <span>🌵</span>
+        <p>No se encontraron plantas con ese criterio.</p>
+      </div>
+    }
+
+    <div class="plants-grid">
+      @for (plant of visiblePlants(); track plant.name) {
+        <div class="plant-card" [class]="'card-' + plant.category">
+          <div class="plant-header">
+            <span class="plant-emoji">{{ plant.icon }}</span>
+            <div class="plant-title">
+              <h3>{{ plant.name }}</h3>
+              <span class="plant-scientific">{{ plant.scientific }}</span>
+            </div>
+            <span class="plant-tag" [class]="categoryClass[plant.category]">
+              {{ categoryLabel[plant.category] }}
+            </span>
+          </div>
+
+          <p class="plant-habitat">
+            <span class="habitat-label">🗺 Hábitat:</span> {{ plant.habitat }}
+          </p>
+
+          <p class="plant-desc">{{ plant.description }}</p>
+
+          <div class="plant-use">
+            <span class="use-label">
+              @if (plant.category === 'peligrosa') { ⛔ Uso: }
+              @else { ✅ Uso: }
+            </span>
+            {{ plant.use }}
+          </div>
+
+          <div class="plant-parts">
+            @for (part of plant.parts; track part) {
+              <span class="part-chip">{{ part }}</span>
+            }
+          </div>
+
+          @if (plant.warning) {
+            <div class="plant-warning">
+              <span>⚠️</span>
+              <p>{{ plant.warning }}</p>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

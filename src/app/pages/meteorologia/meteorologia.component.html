@@ -1,0 +1,115 @@
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <a routerLink="/" class="breadcrumb">← Inicio</a>
+    <div class="page-hero-inner">
+      <span class="page-icon">🌦️</span>
+      <div>
+        <span class="badge-chip">Área de conocimiento</span>
+        <h1>Meteorología de Campo</h1>
+        <p>Leer el cielo, el viento y la naturaleza para anticipar el tiempo sin instrumentos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-inner">
+      <div class="intro-text">
+        <h2 class="section-title">El tiempo como herramienta</h2>
+        <p>Un buen observador puede anticipar cambios climáticos con 6 a 48 horas de antelación usando solo lo que ve, oye y huele. No se trata de ser perfecto: se trata de no ser sorprendido.</p>
+        <p>La meteorología de campo combina lectura de nubes, comportamiento animal, señales vegetales y reglas empíricas probadas por generaciones. Cada región tiene sus propios patrones: conocé los tuyos.</p>
+      </div>
+      <div class="intro-warning">
+        <span class="warn-icon">⚡</span>
+        <div>
+          <h4>Regla de oro: ante la duda, bajá</h4>
+          <p>En montaña, ninguna predicción vale la pena de una tormenta eléctrica. Si el cielo muestra señales ambiguas y estás en altura, la decisión correcta siempre es descender.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUBES -->
+<section class="clouds-section">
+  <div class="container">
+    <h2 class="section-title">Lectura de nubes</h2>
+    <p class="section-sub">Las nubes son el indicador más visible del estado de la atmósfera. Aprender a identificarlas es la habilidad meteorológica más valiosa en campo.</p>
+    <div class="clouds-grid">
+      @for (c of clouds; track c.name) {
+        <div class="cloud-card" [class]="'card-' + c.danger">
+          <div class="cloud-header">
+            <span class="cloud-icon">{{ c.icon }}</span>
+            <div>
+              <h3>{{ c.name }}</h3>
+              <span class="cloud-alt">{{ c.altitude }}</span>
+            </div>
+            <span class="cloud-tag" [class]="dangerClass[c.danger]">{{ dangerLabel[c.danger] }}</span>
+          </div>
+          <p class="cloud-look"><span class="look-label">Aspecto:</span> {{ c.look }}</p>
+          <div class="cloud-signal">
+            <span class="signal-label">Señal:</span>
+            <p>{{ c.signal }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- VIENTO -->
+<section class="wind-section">
+  <div class="container">
+    <h2 class="section-title light">Señales del viento</h2>
+    <p class="section-sub light">El viento comunica cambios antes de que sean visibles en el cielo.</p>
+    <div class="wind-grid">
+      @for (w of windSigns; track w.title) {
+        <div class="wind-card">
+          <span class="wind-icon">{{ w.icon }}</span>
+          <h4>{{ w.title }}</h4>
+          <p>{{ w.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- NATURALEZA -->
+<section class="nature-section">
+  <div class="container">
+    <h2 class="section-title">Señales de la naturaleza</h2>
+    <p class="section-sub">Animales y plantas llevan millones de años adaptados al clima. Sus comportamientos son indicadores confiables cuando se saben leer.</p>
+    <div class="nature-grid">
+      @for (n of natureSigns; track n.title) {
+        <div class="nature-card">
+          <span class="nature-icon">{{ n.icon }}</span>
+          <div>
+            <h4>{{ n.title }}</h4>
+            <p>{{ n.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- REGLAS EMPÍRICAS -->
+<section class="rules-section">
+  <div class="container">
+    <span class="badge-chip">Sabiduría popular verificada</span>
+    <h2 class="rules-title">Reglas del tiempo</h2>
+    <p class="rules-sub">Estas reglas empíricas tienen base meteorológica real. No son infalibles, pero son herramientas útiles cuando no hay otro recurso.</p>
+    <div class="rules-grid">
+      @for (r of rules; track r.num) {
+        <div class="rule-card">
+          <span class="rule-num">{{ r.num }}</span>
+          <h4>{{ r.title }}</h4>
+          <p>{{ r.detail }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

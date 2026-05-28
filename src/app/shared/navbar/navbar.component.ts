@@ -1,6 +1,7 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+  theme = inject(ThemeService);
+
   scrolled = signal(false);
   menuOpen = signal(false);
 
@@ -27,11 +30,11 @@ export class NavbarComponent {
   }
 
   navLinks = [
-    { path: '/supervivencia', label: 'Supervivencia' },
-    { path: '/campismo', label: 'Campismo' },
-    { path: '/navegacion', label: 'Navegación' },
-    { path: '/nudos', label: 'Nudos' },
-    { path: '/primeros-auxilios', label: 'Primeros Auxilios' },
-    { path: '/cocina', label: 'Cocina al Fuego' },
+    { path: '/supervivencia',    label: 'Supervivencia' },
+    { path: '/campismo',         label: 'Campismo' },
+    { path: '/navegacion',       label: 'Navegación' },
+    { path: '/nudos',            label: 'Nudos' },
+    { path: '/primeros-auxilios',label: 'Primeros Auxilios' },
+    { path: '/cocina',           label: 'Cocina al Fuego' },
   ];
 }

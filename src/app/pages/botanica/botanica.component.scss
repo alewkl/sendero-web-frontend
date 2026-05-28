@@ -1,0 +1,294 @@
+.page-hero {
+  background: linear-gradient(160deg, #1a3510 0%, #2d4a1a 50%, #1a2a0e 100%);
+  padding: 8rem 0 4rem;
+  border-bottom: 3px solid var(--gold);
+
+  .breadcrumb {
+    display: inline-block;
+    color: var(--tan-mid);
+    font-size: 0.82rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+    &:hover { color: var(--gold-light); }
+  }
+}
+
+.page-hero-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+
+  .page-icon { font-size: 3.5rem; line-height: 1; margin-top: 0.2rem; }
+
+  h1 {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--cream);
+    margin: 0.4rem 0 0.6rem;
+  }
+
+  p { color: var(--tan-light); font-size: 1.05rem; max-width: 550px; }
+}
+
+.section-sub {
+  color: var(--text-light);
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+  max-width: 660px;
+}
+
+/* CRITICAL WARNING */
+.critical-warning {
+  background: #3d0a0a;
+  border-bottom: 2px solid #c0392b;
+  padding: 1.1rem 0;
+}
+
+.warning-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: #f5c6c6;
+  font-size: 0.88rem;
+  line-height: 1.6;
+
+  .warning-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+  strong { color: #ff6b6b; }
+}
+
+/* ID RULES */
+.rules-section {
+  padding: 5rem 0;
+  background: var(--cream);
+}
+
+.id-rules {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.id-rule {
+  background: var(--white);
+  border: 1.5px solid var(--tan-light);
+  border-left: 4px solid var(--forest-mid);
+  padding: 1.3rem 1.4rem;
+  border-radius: 3px;
+  transition: border-left-color 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    border-left-color: var(--gold);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+  }
+
+  .rule-icon { font-size: 1.6rem; display: block; margin-bottom: 0.6rem; }
+
+  h4 {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.95rem;
+    color: var(--forest-dark);
+    margin-bottom: 0.4rem;
+  }
+
+  p { font-size: 0.83rem; color: var(--text-light); line-height: 1.6; }
+}
+
+/* CATALOG */
+.catalog-section {
+  padding: 5rem 0;
+  background: var(--cream-dark);
+}
+
+.catalog-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  background: var(--white);
+  border: 1.5px solid var(--tan-light);
+  color: var(--text-mid);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover { border-color: var(--forest-mid); }
+
+  &.active {
+    background: var(--forest-dark);
+    border-color: var(--forest-dark);
+    color: var(--cream);
+  }
+}
+
+.search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--white);
+  border: 1.5px solid var(--tan-light);
+  padding: 0.45rem 1rem;
+  border-radius: 3px;
+  transition: border-color 0.2s;
+
+  &:focus-within { border-color: var(--forest-mid); }
+
+  .search-icon { font-size: 1rem; }
+
+  input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    width: 200px;
+
+    &::placeholder { color: var(--tan-dark); }
+  }
+}
+
+/* NO RESULTS */
+.no-results {
+  text-align: center;
+  padding: 4rem 0;
+  color: var(--text-light);
+
+  span { font-size: 3rem; display: block; margin-bottom: 1rem; }
+  p { font-size: 0.95rem; }
+}
+
+/* PLANTS GRID */
+.plants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.plant-card {
+  background: var(--white);
+  border: 1.5px solid var(--tan-light);
+  border-radius: 3px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+
+  &.card-comestible { border-top: 4px solid var(--forest-mid); }
+  &.card-medicinal  { border-top: 4px solid #2980b9; }
+  &.card-peligrosa  { border-top: 4px solid #c0392b; }
+}
+
+.plant-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+
+  .plant-emoji { font-size: 2rem; flex-shrink: 0; line-height: 1; }
+}
+
+.plant-title {
+  flex: 1;
+
+  h3 {
+    font-family: 'Special Elite', cursive;
+    font-size: 1rem;
+    color: var(--forest-dark);
+    margin-bottom: 0.2rem;
+  }
+
+  .plant-scientific {
+    font-style: italic;
+    font-size: 0.75rem;
+    color: var(--tan-dark);
+  }
+}
+
+.plant-tag {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+
+  &.tag-comestible { background: rgba(45,90,27,0.12); color: var(--forest-mid); }
+  &.tag-medicinal  { background: rgba(41,128,185,0.12); color: #2980b9; }
+  &.tag-peligrosa  { background: rgba(192,57,43,0.12); color: #c0392b; }
+}
+
+.plant-habitat {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  line-height: 1.5;
+
+  .habitat-label { font-weight: 600; color: var(--tan-dark); }
+}
+
+.plant-desc {
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+.plant-use {
+  font-size: 0.83rem;
+  color: var(--text-mid);
+  line-height: 1.55;
+  background: var(--cream);
+  padding: 0.7rem 0.9rem;
+  border-radius: 3px;
+
+  .use-label { font-weight: 700; }
+}
+
+.plant-parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.part-chip {
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(45,90,27,0.08);
+  border: 1px solid rgba(45,90,27,0.2);
+  color: var(--forest-mid);
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
+
+  .card-peligrosa & {
+    background: rgba(192,57,43,0.08);
+    border-color: rgba(192,57,43,0.2);
+    color: #c0392b;
+  }
+}
+
+.plant-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: rgba(192,57,43,0.07);
+  border: 1px solid rgba(192,57,43,0.2);
+  border-left: 3px solid #c0392b;
+  padding: 0.7rem 0.9rem;
+  border-radius: 2px;
+
+  p { font-size: 0.78rem; color: #8b2020; line-height: 1.5; font-weight: 500; }
+}

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Open+Sans:wght@300;400;600;700&family=Special+Elite&display=swap');
 
-:root {
+:root,
+[data-theme="light"] {
   --forest-dark: #1e3a0f;
   --forest-mid: #2d5a1b;
   --forest-light: #4a7c2f;
@@ -20,6 +21,88 @@
   --text-mid: #4a3c2a;
   --text-light: #7a6a55;
   --white: #faf8f4;
+}
+
+[data-theme="dark"] {
+  --forest-dark: #0e1f08;
+  --forest-mid: #3a7022;
+  --forest-light: #5a9840;
+  --forest-pale: #78b45a;
+  --earth-dark: #5c3010;
+  --earth-mid: #8a5228;
+  --earth-light: #b07848;
+  --earth-pale: #d0a070;
+  --tan-dark: #6a5840;
+  --tan-mid: #8a7258;
+  --tan-light: #3a3028;
+  --cream: #1e1c14;
+  --cream-dark: #282518;
+  --gold: #d49a18;
+  --gold-light: #f0b830;
+  --text-dark: #e8d8bc;
+  --text-mid: #c4a882;
+  --text-light: #8a7a65;
+  --white: #242018;
+
+  /* Dark mode specific overrides */
+  --surface-card: #2a2820;
+  --surface-elevated: #323028;
+  --border-color: #3a3828;
+}
+
+[data-theme="dark"] body {
+  background-color: var(--cream);
+  color: var(--text-dark);
+}
+
+/* Dark mode card and surface overrides */
+[data-theme="dark"] {
+  .section-card,
+  .part-card,
+  .pillar-card,
+  .check-card,
+  .shelter-card,
+  .method-card,
+  .knot-card,
+  .rule-card,
+  .emerg-card,
+  .recipe-card,
+  .tip-card,
+  .cloud-card,
+  .wind-card,
+  .nature-card,
+  .plant-card,
+  .id-rule,
+  .natural-card,
+  .stat-item,
+  .trip-btn,
+  .cat-block,
+  .wip-card,
+  .progress-wrap {
+    background: var(--white) !important;
+    border-color: var(--tan-light) !important;
+  }
+
+  .plant-use,
+  .cloud-signal,
+  .knot-steps ol,
+  .checklist-cta {
+    background: var(--cream-dark) !important;
+  }
+
+  .item {
+    background: var(--white) !important;
+    border-bottom-color: var(--cream-dark) !important;
+    &:hover { background: var(--cream-dark) !important; }
+  }
+
+  .intro-band p { color: var(--tan-light); }
+
+  .search-wrap {
+    background: var(--white) !important;
+    border-color: var(--tan-light) !important;
+    input { color: var(--text-dark) !important; }
+  }
 }
 
 *, *::before, *::after {

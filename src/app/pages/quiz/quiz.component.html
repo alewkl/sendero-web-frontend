@@ -1,0 +1,154 @@
+<div class="quiz-page">
+
+  <!-- START SCREEN -->
+  @if (state() === 'start') {
+    @if (!embedded()) {
+      <div class="quiz-hero">
+        <div class="container">
+          <a routerLink="/" class="breadcrumb">← Inicio</a>
+          <div class="hero-inner">
+            <div class="hero-icon">🧠</div>
+            <div>
+              <h1>Quiz de Conocimiento</h1>
+              <p>Pon a prueba lo que aprendiste. {{ allQuestions.length }} preguntas sobre supervivencia, naturaleza y habilidades de campo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+
+    <div class="quiz-start-body">
+      <div class="container">
+        <div class="start-card">
+          <h2>Elegí una sección</h2>
+          <p class="start-hint">Podés repasar una sección específica o mezclar todo en modo completo.</p>
+
+          <div class="section-grid">
+            @for (sec of sections; track sec.id) {
+              <button
+                class="sec-btn"
+                [class.active]="selectedSection() === sec.id"
+                (click)="selectedSection.set(sec.id)">
+                <span class="sec-icon">{{ sec.icon }}</span>
+                <span class="sec-label">{{ sec.label }}</span>
+                @if (sec.id !== 'todas') {
+                  <span class="sec-count">{{ questionsForSection(sec.id) }} preguntas</span>
+                } @else {
+                  <span class="sec-count">{{ allQuestions.length }} preguntas</span>
+                }
+              </button>
+            }
+          </div>
+
+          <button class="btn-start" (click)="startQuiz()">
+            Comenzar quiz {{ getSectionIcon() }} {{ getSectionLabel() }}
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- PLAYING SCREEN -->
+  @if (state() === 'playing') {
+    <div class="quiz-play">
+      <div class="quiz-topbar">
+        <div class="container">
+          <div class="quiz-meta">
+            <span class="quiz-section-badge">{{ currentQuestion().sectionLabel }}</span>
+            <span class="quiz-counter">{{ currentIndex() + 1 }} / {{ totalQuestions() }}</span>
+            <button class="quit-btn" (click)="restart()">✕ Salir</button>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="progressPercent()"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="question-card">
+          <p class="question-text">{{ currentQuestion().question }}</p>
+
+          <div class="options-list">
+            @for (opt of currentQuestion().options; track $index) {
+              <button
+                class="option-btn"
+                [class]="getOptionClass($index)"
+                (click)="selectAnswer($index)">
+                <span class="opt-letter">{{ ['A','B','C','D'][$index] }}</span>
+                <span class="opt-text">{{ opt }}</span>
+                @if (isAnswered() && $index === currentQuestion().correct) {
+                  <span class="opt-mark">✓</span>
+                }
+                @if (isAnswered() && $index === selectedAnswer() && $index !== currentQuestion().correct) {
+                  <span class="opt-mark">✗</span>
+                }
+              </button>
+            }
+          </div>
+
+          @if (showExplanation()) {
+            <div class="explanation" [class.correct-exp]="isCorrect()" [class.wrong-exp]="!isCorrect()">
+              <span class="exp-label">{{ isCorrect() ? '✓ Correcto' : '✗ Incorrecto' }}</span>
+              <p>{{ currentQuestion().explanation }}</p>
+            </div>
+
+            <button class="btn-next" (click)="next()">
+              @if (currentIndex() + 1 < totalQuestions()) {
+                Siguiente pregunta →
+              } @else {
+                Ver resultados →
+              }
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- RESULT SCREEN -->
+  @if (state() === 'result') {
+    <div class="quiz-result">
+      <div class="result-hero">
+        <div class="container">
+          <div class="result-score-wrap">
+            <div class="result-stars">
+              @for (star of [1,2,3]; track star) {
+                <span class="star" [class.lit]="star <= getStars()">★</span>
+              }
+            </div>
+            <div class="result-score">{{ score() }}<span>/{{ totalQuestions() }}</span></div>
+            <div class="result-pct">{{ percentage() }}% de aciertos</div>
+            <p class="result-msg">{{ getScoreMessage() }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="result-body">
+          <div class="result-breakdown">
+            <h3>Tu recorrido</h3>
+            <div class="answer-trail">
+              @for (correct of answers(); track $index) {
+                <span class="trail-dot" [class.t-ok]="correct" [class.t-fail]="!correct"
+                      [title]="'Pregunta ' + ($index + 1)">
+                  {{ correct ? '✓' : '✗' }}
+                </span>
+              }
+            </div>
+          </div>
+
+          <div class="result-actions">
+            <button class="btn-retry" (click)="startQuiz()">
+              🔄 Reintentar — {{ getSectionIcon() }} {{ getSectionLabel() }}
+            </button>
+            <button class="btn-change" (click)="restart()">
+              🎯 Cambiar sección
+            </button>
+            <a routerLink="/" class="btn-home">← Volver al inicio</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+</div>

@@ -1,0 +1,84 @@
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <a routerLink="/" class="breadcrumb">← Inicio</a>
+    <div class="page-hero-inner">
+      <span class="page-icon">🎒</span>
+      <div>
+        <span class="badge-chip">Herramienta</span>
+        <h1>Checklist de Mochila</h1>
+        <p>Configurá el tipo de salida y tachá cada ítem antes de partir. El progreso se guarda automáticamente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="checklist-app">
+  <div class="container">
+
+    <!-- TRIP SELECTOR -->
+    <div class="trip-selector">
+      @for (opt of tripOptions; track opt.id) {
+        <button class="trip-btn" [class.active]="tripType() === opt.id"
+                (click)="tripType.set(opt.id)">
+          <span class="trip-icon">{{ opt.icon }}</span>
+          <span class="trip-label">{{ opt.label }}</span>
+          <span class="trip-desc">{{ opt.desc }}</span>
+        </button>
+      }
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span class="progress-text">
+          {{ checkedItems() }} de {{ totalItems() }} ítems listos
+        </span>
+        <div class="progress-actions">
+          <button class="action-btn" (click)="print()">🖨️ Imprimir</button>
+          <button class="action-btn reset" (click)="resetAll()">↺ Limpiar</button>
+        </div>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" [style.width.%]="progress()">
+          @if (progress() > 8) {
+            <span class="progress-pct">{{ progress() }}%</span>
+          }
+        </div>
+      </div>
+      @if (progress() === 100) {
+        <div class="progress-complete">✅ ¡Mochila lista! Buen viaje.</div>
+      }
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="categories-grid">
+      @for (cat of visibleItems(); track cat.name) {
+        <div class="cat-block">
+          <h3 class="cat-title">
+            <span>{{ cat.icon }}</span>
+            <span>{{ cat.name }}</span>
+            <span class="cat-count">
+              {{ countChecked(cat.items) }} / {{ cat.items.length }}
+            </span>
+          </h3>
+          <ul class="items-list">
+            @for (item of cat.items; track item.id) {
+              <li class="item" [class.checked]="item.checked" [class.essential]="item.essential"
+                  (click)="toggle(item)">
+                <span class="item-check">
+                  @if (item.checked) { ✓ } @else { &nbsp; }
+                </span>
+                <span class="item-name">{{ item.name }}</span>
+                @if (item.essential && !item.checked) {
+                  <span class="essential-dot" title="Esencial"></span>
+                }
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+
+  </div>
+</div>

@@ -21,8 +21,13 @@
       }
     </ul>
 
-    <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen()" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-controls">
+      <button class="theme-toggle" (click)="theme.toggle()" [title]="theme.isDark() ? 'Modo claro' : 'Modo oscuro'">
+        @if (theme.isDark()) { ☀️ } @else { 🌙 }
+      </button>
+      <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen()" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>

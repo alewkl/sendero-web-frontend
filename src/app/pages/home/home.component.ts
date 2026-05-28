@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { QuizComponent } from '../quiz/quiz.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, QuizComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -51,15 +52,22 @@ export class HomeComponent {
       desc: 'Recetas y técnicas de cocción al aire libre con lo mínimo y máximo sabor.',
       path: '/cocina',
       wip: false
+    },
+    {
+      icon: '🌿',
+      title: 'Botánica y Meteorología',
+      desc: 'Plantas silvestres y lectura del tiempo. Disponibles como sub-secciones dentro de Supervivencia.',
+      path: '/supervivencia',
+      wip: false
     }
   ];
 
   skills = [
-    { icon: '🌿', label: 'Botánica silvestre' },
     { icon: '⭐', label: 'Astronomía básica' },
     { icon: '🪵', label: 'Tallado de madera' },
     { icon: '🐾', label: 'Rastreo animal' },
-    { icon: '🌧️', label: 'Lectura del tiempo' },
+    { icon: '🌧️', label: 'Meteorología de campo' },
     { icon: '🏕️', label: 'Vida al aire libre' },
+    { icon: '🎒', label: 'Checklist de mochila' },
   ];
 }

@@ -13,127 +13,181 @@
   </div>
 </section>
 
-<!-- SELECCIÓN DE SITIO -->
-<section class="site-section">
+<!-- TAB BAR -->
+<nav class="page-tabs">
   <div class="container">
-    <h2 class="section-title">Elegir el sitio</h2>
-    <p class="section-sub">Un buen campamento se elige, no se improvisa. Estos son los factores a evaluar antes de descargar la mochila.</p>
-    <div class="checklist-grid">
-      @for (item of siteChecklist; track item.label) {
-        <div class="check-card">
-          <span class="check-icon">{{ item.icon }}</span>
-          <div>
-            <h4>{{ item.label }}</h4>
-            <p>{{ item.desc }}</p>
-          </div>
-        </div>
-      }
+    <div class="tabs-row">
+      <button class="page-tab" [class.active]="activeTab() === 'campismo'"  (click)="activeTab.set('campismo')">⛺ Campismo</button>
+      <button class="page-tab" [class.active]="activeTab() === 'checklist'" (click)="activeTab.set('checklist')">🎒 Checklist de Mochila</button>
     </div>
   </div>
-</section>
+</nav>
 
-<!-- TIPOS DE REFUGIO -->
-<section class="shelter-section">
-  <div class="container">
-    <h2 class="section-title">Tipos de refugio</h2>
-    <p class="section-sub">La elección depende del terreno, la estación y el peso que estés dispuesto a cargar.</p>
-    <div class="shelter-grid">
-      @for (s of shelterTypes; track s.name) {
-        <div class="shelter-card">
-          <div class="shelter-top">
-            <span class="shelter-icon">{{ s.icon }}</span>
+<!-- ═══════════════ CAMPISMO ═══════════════ -->
+@if (activeTab() === 'campismo') {
+
+  <section class="site-section">
+    <div class="container">
+      <h2 class="section-title">Elegir el sitio</h2>
+      <p class="section-sub">Un buen campamento se elige, no se improvisa. Estos son los factores a evaluar antes de descargar la mochila.</p>
+      <div class="checklist-grid">
+        @for (item of siteChecklist; track item.label) {
+          <div class="check-card">
+            <span class="check-icon">{{ item.icon }}</span>
             <div>
-              <h3>{{ s.name }}</h3>
-              <span class="difficulty" [class]="s.levelClass">{{ s.level }}</span>
+              <h4>{{ item.label }}</h4>
+              <p>{{ item.desc }}</p>
             </div>
           </div>
-          <div class="shelter-lists">
-            <div class="pro-list">
-              <span class="list-label">A favor</span>
-              <ul>
-                @for (p of s.pros; track p) { <li>{{ p }}</li> }
-              </ul>
-            </div>
-            <div class="con-list">
-              <span class="list-label">En contra</span>
-              <ul>
-                @for (c of s.cons; track c) { <li>{{ c }}</li> }
-              </ul>
-            </div>
-          </div>
-        </div>
-      }
+        }
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- LAYOUT DEL CAMPAMENTO -->
-<section class="layout-section">
-  <div class="container">
-    <div class="layout-inner">
-      <div class="layout-text">
-        <span class="badge-chip">Organización</span>
-        <h2>Las zonas del campamento</h2>
-        <p>Un campamento ordenado es más seguro, más cómodo y deja menos rastro. Separar las actividades por zonas es el primer paso.</p>
-        <div class="zones-list">
-          @for (z of campLayout; track z.zone) {
-            <div class="zone-item">
-              <span class="zone-icon">{{ z.icon }}</span>
+  <section class="shelter-section">
+    <div class="container">
+      <h2 class="section-title">Tipos de refugio</h2>
+      <p class="section-sub">La elección depende del terreno, la estación y el peso que estés dispuesto a cargar.</p>
+      <div class="shelter-grid">
+        @for (s of shelterTypes; track s.name) {
+          <div class="shelter-card">
+            <div class="shelter-top">
+              <span class="shelter-icon">{{ s.icon }}</span>
               <div>
-                <h4>{{ z.zone }}</h4>
-                <p>{{ z.desc }}</p>
+                <h3>{{ s.name }}</h3>
+                <span class="difficulty" [class]="s.levelClass">{{ s.level }}</span>
               </div>
             </div>
-          }
+            <div class="shelter-lists">
+              <div class="pro-list">
+                <span class="list-label">A favor</span>
+                <ul>@for (p of s.pros; track p) { <li>{{ p }}</li> }</ul>
+              </div>
+              <div class="con-list">
+                <span class="list-label">En contra</span>
+                <ul>@for (c of s.cons; track c) { <li>{{ c }}</li> }</ul>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="layout-section">
+    <div class="container">
+      <div class="layout-inner">
+        <div class="layout-text">
+          <span class="badge-chip">Organización</span>
+          <h2>Las zonas del campamento</h2>
+          <p>Un campamento ordenado es más seguro, más cómodo y deja menos rastro. Separar las actividades por zonas es el primer paso.</p>
+          <div class="zones-list">
+            @for (z of campLayout; track z.zone) {
+              <div class="zone-item">
+                <span class="zone-icon">{{ z.icon }}</span>
+                <div><h4>{{ z.zone }}</h4><p>{{ z.desc }}</p></div>
+              </div>
+            }
+          </div>
+        </div>
+        <div class="layout-diagram">
+          <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="120" cy="120" r="110" stroke="var(--tan-mid)" stroke-width="1" stroke-dasharray="5 3"/>
+            <circle cx="100" cy="90"  r="38" fill="rgba(45,90,27,0.08)"    stroke="var(--forest-mid)" stroke-width="1.5"/>
+            <circle cx="155" cy="145" r="30" fill="rgba(196,134,10,0.08)"  stroke="var(--gold)"       stroke-width="1.5"/>
+            <circle cx="75"  cy="158" r="24" fill="rgba(107,63,26,0.08)"   stroke="var(--earth-mid)"  stroke-width="1.5"/>
+            <circle cx="148" cy="82"  r="20" fill="rgba(138,115,85,0.1)"   stroke="var(--tan-dark)"   stroke-width="1.5"/>
+            <text x="100" y="88"  text-anchor="middle" font-size="16">😴</text>
+            <text x="100" y="104" text-anchor="middle" font-size="7" fill="var(--forest-mid)" font-family="Open Sans,sans-serif" font-weight="700">DORMIR</text>
+            <text x="155" y="143" text-anchor="middle" font-size="14">🔥</text>
+            <text x="155" y="158" text-anchor="middle" font-size="7" fill="var(--gold)" font-family="Open Sans,sans-serif" font-weight="700">COCINA</text>
+            <text x="75"  y="156" text-anchor="middle" font-size="12">💧</text>
+            <text x="75"  y="169" text-anchor="middle" font-size="7" fill="var(--earth-mid)" font-family="Open Sans,sans-serif" font-weight="700">ASEO</text>
+            <text x="148" y="80"  text-anchor="middle" font-size="11">🗑️</text>
+            <text x="148" y="92"  text-anchor="middle" font-size="7" fill="var(--tan-dark)" font-family="Open Sans,sans-serif" font-weight="700">BASURA</text>
+          </svg>
         </div>
       </div>
-      <div class="layout-diagram">
-        <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Outer boundary -->
-          <circle cx="120" cy="120" r="110" stroke="var(--tan-mid)" stroke-width="1" stroke-dasharray="5 3"/>
-          <!-- Zone circles -->
-          <circle cx="100" cy="90" r="38" fill="rgba(45,90,27,0.08)" stroke="var(--forest-mid)" stroke-width="1.5"/>
-          <circle cx="155" cy="145" r="30" fill="rgba(196,134,10,0.08)" stroke="var(--gold)" stroke-width="1.5"/>
-          <circle cx="75" cy="158" r="24" fill="rgba(107,63,26,0.08)" stroke="var(--earth-mid)" stroke-width="1.5"/>
-          <circle cx="148" cy="82" r="20" fill="rgba(138,115,85,0.1)" stroke="var(--tan-dark)" stroke-width="1.5"/>
-          <!-- Labels -->
-          <text x="100" y="88" text-anchor="middle" font-size="16">😴</text>
-          <text x="100" y="104" text-anchor="middle" font-size="7" fill="var(--forest-mid)" font-family="Open Sans,sans-serif" font-weight="700">DORMIR</text>
-          <text x="155" y="143" text-anchor="middle" font-size="14">🔥</text>
-          <text x="155" y="158" text-anchor="middle" font-size="7" fill="var(--gold)" font-family="Open Sans,sans-serif" font-weight="700">COCINA</text>
-          <text x="75" y="156" text-anchor="middle" font-size="12">💧</text>
-          <text x="75" y="169" text-anchor="middle" font-size="7" fill="var(--earth-mid)" font-family="Open Sans,sans-serif" font-weight="700">ASEO</text>
-          <text x="148" y="80" text-anchor="middle" font-size="11">🗑️</text>
-          <text x="148" y="92" text-anchor="middle" font-size="7" fill="var(--tan-dark)" font-family="Open Sans,sans-serif" font-weight="700">BASURA</text>
-          <!-- Wind arrow -->
-          <path d="M30 40 L60 40" stroke="var(--tan-mid)" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <text x="22" y="44" font-size="7" fill="var(--tan-dark)" font-family="Open Sans,sans-serif">Viento</text>
-          <defs>
-            <marker id="arrow" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
-              <path d="M0 0 L6 3 L0 6 Z" fill="var(--tan-mid)"/>
-            </marker>
-          </defs>
-        </svg>
+    </div>
+  </section>
+
+  <section class="lnt-section">
+    <div class="container">
+      <div class="lnt-inner">
+        <span class="badge-chip">Ética del campo</span>
+        <h2>Principios de mínimo impacto</h2>
+        <p class="lnt-intro">El objetivo es que el lugar quede igual — o mejor — de como lo encontraste.</p>
+        <ol class="lnt-list">
+          @for (p of leaveNoTrace; track p; let i = $index) {
+            <li>
+              <span class="lnt-num">{{ i + 1 | number:'2.0' }}</span>
+              <span>{{ p }}</span>
+            </li>
+          }
+        </ol>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+}
 
-<!-- MÍNIMO IMPACTO -->
-<section class="lnt-section">
-  <div class="container">
-    <div class="lnt-inner">
-      <span class="badge-chip">Ética del campo</span>
-      <h2>Principios de mínimo impacto</h2>
-      <p class="lnt-intro">El objetivo es que el lugar quede igual — o mejor — de como lo encontraste.</p>
-      <ol class="lnt-list">
-        @for (p of leaveNoTrace; track p; let i = $index) {
-          <li>
-            <span class="lnt-num">{{ i + 1 | number:'2.0' }}</span>
-            <span>{{ p }}</span>
-          </li>
+<!-- ═══════════════ CHECKLIST ═══════════════ -->
+@if (activeTab() === 'checklist') {
+  <div class="checklist-app">
+    <div class="container">
+
+      <div class="trip-selector">
+        @for (opt of tripOptions; track opt.id) {
+          <button class="trip-btn" [class.active]="tripType() === opt.id" (click)="tripType.set(opt.id)">
+            <span class="trip-icon">{{ opt.icon }}</span>
+            <span class="trip-label">{{ opt.label }}</span>
+            <span class="trip-desc">{{ opt.desc }}</span>
+          </button>
         }
-      </ol>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-info">
+          <span class="progress-text">{{ checkedItems() }} de {{ totalItems() }} ítems listos</span>
+          <div class="progress-actions">
+            <button class="action-btn" (click)="print()">🖨️ Imprimir</button>
+            <button class="action-btn reset" (click)="resetAll()">↺ Limpiar</button>
+          </div>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" [style.width.%]="progress()">
+            @if (progress() > 8) {
+              <span class="progress-pct">{{ progress() }}%</span>
+            }
+          </div>
+        </div>
+        @if (progress() === 100) {
+          <div class="progress-complete">✅ ¡Mochila lista! Buen viaje.</div>
+        }
+      </div>
+
+      <div class="categories-grid">
+        @for (cat of visibleItems(); track cat.name) {
+          <div class="cat-block">
+            <h3 class="cat-title">
+              <span>{{ cat.icon }}</span>
+              <span>{{ cat.name }}</span>
+              <span class="cat-count">{{ countChecked(cat.items) }} / {{ cat.items.length }}</span>
+            </h3>
+            <ul class="items-list">
+              @for (item of cat.items; track item.id) {
+                <li class="item" [class.checked]="item.checked" [class.essential]="item.essential" (click)="toggle(item)">
+                  <span class="item-check">@if (item.checked) { ✓ } @else { &nbsp; }</span>
+                  <span class="item-name">{{ item.name }}</span>
+                  @if (item.essential && !item.checked) {
+                    <span class="essential-dot" title="Esencial"></span>
+                  }
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+
     </div>
   </div>
-</section>
+}
