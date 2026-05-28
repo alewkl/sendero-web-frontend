@@ -1,38 +1,101 @@
-<div class="wip-page">
-  <div class="wip-hero">
-    <div class="container">
-      <a routerLink="/" class="breadcrumb">← Inicio</a>
-      <div class="wip-hero-inner">
-        <span class="page-icon">🩹</span>
-        <div>
-          <span class="badge-chip">Área de conocimiento</span>
-          <h1>Primeros Auxilios</h1>
-          <p>Protocolos de atención básica, manejo de heridas, fracturas y emergencias en ambientes naturales.</p>
-        </div>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <a routerLink="/" class="breadcrumb">← Inicio</a>
+    <div class="page-hero-inner">
+      <span class="page-icon">🩹</span>
+      <div>
+        <span class="badge-chip">Área de conocimiento</span>
+        <h1>Primeros Auxilios</h1>
+        <p>Protocolos de atención básica para emergencias en campo, lejos de centros médicos.</p>
       </div>
     </div>
   </div>
-  <div class="wip-body">
-    <div class="container">
-      <div class="wip-card">
-        <div class="wip-icon-wrap">
-          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="40" cy="40" r="36" stroke="var(--gold)" stroke-width="2" stroke-dasharray="8 4"/>
-            <text x="40" y="35" text-anchor="middle" font-size="22" fill="var(--forest-mid)">🚧</text>
-            <text x="40" y="58" text-anchor="middle" font-size="9" fill="var(--text-light)" font-family="Open Sans,sans-serif" font-weight="700" letter-spacing="1">EN CONSTRUCCIÓN</text>
-          </svg>
-        </div>
-        <h2>Esta sección está en preparación</h2>
-        <p>Documentando protocolos de primeros auxilios adaptados a situaciones de campo, lejos de centros médicos y con recursos limitados.</p>
-        <div class="wip-topics">
-          <span>RCP básico</span>
-          <span>Hemorragias y torniquete</span>
-          <span>Hipotermia e hipertermia</span>
-          <span>Fracturas y esguinces</span>
-          <span>Picaduras e intoxicaciones</span>
-        </div>
-        <a routerLink="/" class="btn-primary">Volver al inicio</a>
-      </div>
-    </div>
+</section>
+
+<!-- AVISO IMPORTANTE -->
+<div class="disclaimer">
+  <div class="container">
+    <span class="disclaimer-icon">ℹ️</span>
+    <p>Esta guía es un recurso educativo de campo. No reemplaza la formación presencial en primeros auxilios. Se recomienda realizar un curso certificado antes de salir al monte.</p>
   </div>
 </div>
+
+<!-- PRIORIDADES -->
+<section class="priorities-section">
+  <div class="container">
+    <h2 class="section-title">Prioridades de actuación</h2>
+    <p class="section-sub">En toda emergencia, el orden importa. Seguir esta secuencia evita cometer errores graves bajo presión.</p>
+    <div class="priorities-list">
+      @for (p of priorities; track p.num) {
+        <div class="priority-card">
+          <span class="priority-icon">{{ p.icon }}</span>
+          <div class="priority-body">
+            <div class="priority-header">
+              <span class="priority-num">{{ p.num }}</span>
+              <h3>{{ p.title }}</h3>
+            </div>
+            <p>{{ p.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCIAS -->
+<section class="emergencies-section">
+  <div class="container">
+    <h2 class="section-title">Situaciones frecuentes</h2>
+    <p class="section-sub">Protocolos básicos para las emergencias más comunes en ambientes naturales.</p>
+    <div class="emerg-grid">
+      @for (e of emergencies; track e.title) {
+        <div class="emerg-card" [class]="'emerg-' + e.color">
+          <div class="emerg-header">
+            <span class="emerg-icon">{{ e.icon }}</span>
+            <h3>{{ e.title }}</h3>
+          </div>
+          <ol class="emerg-steps">
+            @for (step of e.steps; track step) {
+              <li>{{ step }}</li>
+            }
+          </ol>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- BOTIQUÍN -->
+<section class="kit-section">
+  <div class="container">
+    <div class="kit-inner">
+      <div>
+        <span class="badge-chip">Equipamiento</span>
+        <h2 class="kit-title">Botiquín de campo</h2>
+        <p class="kit-intro">Un botiquín mínimo para grupos de hasta 6 personas en salidas de 1 a 3 días.</p>
+        <ul class="kit-list">
+          @for (k of kitItems; track k.item) {
+            <li [class.essential]="k.essential">
+              <span class="kit-dot"></span>
+              <span>{{ k.item }}</span>
+              @if (k.essential) {
+                <span class="essential-tag">esencial</span>
+              }
+            </li>
+          }
+        </ul>
+      </div>
+      <div class="kit-note">
+        <span class="note-icon">📋</span>
+        <h4>Antes de cada salida</h4>
+        <ul>
+          <li>Revisá fechas de vencimiento</li>
+          <li>Reponé lo que usaste en la salida anterior</li>
+          <li>Asegurate de que todo el grupo sepa dónde está el botiquín</li>
+          <li>Llevá siempre los medicamentos específicos de cada integrante</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

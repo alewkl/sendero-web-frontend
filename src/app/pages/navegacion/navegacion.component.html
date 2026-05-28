@@ -1,38 +1,136 @@
-<div class="wip-page">
-  <div class="wip-hero">
-    <div class="container">
-      <a routerLink="/" class="breadcrumb">← Inicio</a>
-      <div class="wip-hero-inner">
-        <span class="page-icon">🧭</span>
-        <div>
-          <span class="badge-chip">Área de conocimiento</span>
-          <h1>Navegación</h1>
-          <p>Orientación con mapa y brújula, lectura del terreno, azimut y técnicas de navegación nocturna.</p>
-        </div>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <a routerLink="/" class="breadcrumb">← Inicio</a>
+    <div class="page-hero-inner">
+      <span class="page-icon">🧭</span>
+      <div>
+        <span class="badge-chip">Área de conocimiento</span>
+        <h1>Navegación</h1>
+        <p>Orientación con mapa y brújula, lectura del terreno y técnicas de navegación sin instrumentos.</p>
       </div>
     </div>
   </div>
-  <div class="wip-body">
-    <div class="container">
-      <div class="wip-card">
-        <div class="wip-icon-wrap">
-          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="40" cy="40" r="36" stroke="var(--gold)" stroke-width="2" stroke-dasharray="8 4"/>
-            <text x="40" y="35" text-anchor="middle" font-size="22" fill="var(--forest-mid)">🚧</text>
-            <text x="40" y="58" text-anchor="middle" font-size="9" fill="var(--text-light)" font-family="Open Sans,sans-serif" font-weight="700" letter-spacing="1">EN CONSTRUCCIÓN</text>
-          </svg>
+</section>
+
+<!-- BRÚJULA -->
+<section class="compass-section">
+  <div class="container">
+    <h2 class="section-title">La brújula</h2>
+    <p class="section-sub">La brújula de placa base es el instrumento estándar para navegación terrestre. Conocer cada parte es el primer paso.</p>
+    <div class="parts-grid">
+      @for (p of compassParts; track p.name) {
+        <div class="part-card">
+          <h4>{{ p.name }}</h4>
+          <p>{{ p.desc }}</p>
         </div>
-        <h2>Esta sección está en preparación</h2>
-        <p>Documentando el arte de la navegación terrestre: uso de brújula, lectura de curvas de nivel, triangulación y orientación astronómica.</p>
-        <div class="wip-topics">
-          <span>Uso de brújula</span>
-          <span>Lectura de mapas topográficos</span>
-          <span>Azimut y rumbos</span>
-          <span>Navegación nocturna con estrellas</span>
-          <span>Técnicas sin instrumentos</span>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- AZIMUT -->
+<section class="azimuth-section">
+  <div class="container">
+    <div class="azimuth-inner">
+      <div class="azimuth-text">
+        <span class="badge-chip">Técnica fundamental</span>
+        <h2>Tomar un azimut</h2>
+        <p>El azimut es el ángulo entre el norte y tu destino, medido en sentido horario. Estos cuatro pasos aplican tanto sobre el terreno como sobre el mapa.</p>
+        <div class="steps-list">
+          @for (s of azimuthSteps; track s.num) {
+            <div class="step-item">
+              <span class="step-num">{{ s.num }}</span>
+              <div>
+                <h4>{{ s.title }}</h4>
+                <p>{{ s.desc }}</p>
+              </div>
+            </div>
+          }
         </div>
-        <a routerLink="/" class="btn-primary">Volver al inicio</a>
+      </div>
+      <div class="azimuth-deco">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Rose -->
+          <circle cx="100" cy="100" r="88" stroke="var(--tan-mid)" stroke-width="1" stroke-dasharray="4 3"/>
+          <circle cx="100" cy="100" r="60" stroke="var(--tan-light)" stroke-width="1"/>
+          <circle cx="100" cy="100" r="6" fill="var(--forest-mid)"/>
+          <!-- Cardinal ticks -->
+          <line x1="100" y1="12" x2="100" y2="28" stroke="var(--gold)" stroke-width="2.5"/>
+          <line x1="100" y1="172" x2="100" y2="188" stroke="var(--tan-mid)" stroke-width="1.5"/>
+          <line x1="12" y1="100" x2="28" y2="100" stroke="var(--tan-mid)" stroke-width="1.5"/>
+          <line x1="172" y1="100" x2="188" y2="100" stroke="var(--tan-mid)" stroke-width="1.5"/>
+          <!-- Needle -->
+          <polygon points="100,30 96,100 100,108 104,100" fill="var(--gold)"/>
+          <polygon points="100,170 96,100 100,92 104,100" fill="var(--tan-dark)" opacity="0.7"/>
+          <!-- Labels -->
+          <text x="100" y="10" text-anchor="middle" font-size="11" fill="var(--gold)" font-family="Special Elite,serif" font-weight="700">N</text>
+          <text x="100" y="196" text-anchor="middle" font-size="10" fill="var(--tan-mid)" font-family="Special Elite,serif">S</text>
+          <text x="194" y="104" text-anchor="middle" font-size="10" fill="var(--tan-mid)" font-family="Special Elite,serif">E</text>
+          <text x="6" y="104" text-anchor="middle" font-size="10" fill="var(--tan-mid)" font-family="Special Elite,serif">O</text>
+          <!-- Degree marks -->
+          <text x="154" y="54" font-size="8" fill="var(--tan-dark)" font-family="Open Sans,sans-serif">45°</text>
+          <text x="148" y="158" font-size="8" fill="var(--tan-dark)" font-family="Open Sans,sans-serif">135°</text>
+          <text x="38" y="158" font-size="8" fill="var(--tan-dark)" font-family="Open Sans,sans-serif">225°</text>
+          <text x="38" y="54" font-size="8" fill="var(--tan-dark)" font-family="Open Sans,sans-serif">315°</text>
+        </svg>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+<!-- MAPA TOPOGRÁFICO -->
+<section class="map-section">
+  <div class="container">
+    <h2 class="section-title">Leer un mapa topográfico</h2>
+    <p class="section-sub">El mapa topo convierte el terreno tridimensional en papel. Entender sus símbolos es leer el paisaje antes de verlo.</p>
+    <div class="map-grid">
+      @for (c of mapConcepts; track c.title) {
+        <div class="map-card">
+          <span class="map-icon">{{ c.icon }}</span>
+          <h4>{{ c.title }}</h4>
+          <p>{{ c.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- SIN INSTRUMENTOS -->
+<section class="natural-section">
+  <div class="container">
+    <span class="badge-chip">Sin equipamiento</span>
+    <h2 class="nat-title">Orientación natural</h2>
+    <p class="section-sub">Cuando no tenés brújula ni GPS, el entorno da señales. Son referencias aproximadas — usarlas en conjunto mejora la precisión.</p>
+    <div class="natural-grid">
+      @for (m of naturalMethods; track m.title) {
+        <div class="natural-card">
+          <span class="nat-icon">{{ m.icon }}</span>
+          <h3>{{ m.title }}</h3>
+          <p>{{ m.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ERRORES COMUNES -->
+<section class="errors-section">
+  <div class="container">
+    <div class="errors-inner">
+      <h2 class="section-title">Errores frecuentes</h2>
+      <p class="section-sub">La navegación se aprende errando. Mejor conocer estos fallos antes de cometerlos en campo.</p>
+      <div class="errors-list">
+        @for (e of errors; track e.label) {
+          <div class="error-card">
+            <span class="error-icon">⚠️</span>
+            <div>
+              <h4>{{ e.label }}</h4>
+              <p>{{ e.desc }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

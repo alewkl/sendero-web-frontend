@@ -22,35 +22,35 @@ export class HomeComponent {
       title: 'Campismo',
       desc: 'Todo sobre acampar: elección del sitio, armado de carpas, organización del campamento.',
       path: '/campismo',
-      wip: true
+      wip: false
     },
     {
       icon: '🧭',
       title: 'Navegación',
       desc: 'Orientación con mapa y brújula, lectura del terreno y técnicas de navegación nocturna.',
       path: '/navegacion',
-      wip: true
+      wip: false
     },
     {
       icon: '🪢',
       title: 'Nudos y Amarres',
       desc: 'Biblioteca de nudos, gazas, amarres y aplicaciones prácticas en el campo.',
       path: '/nudos',
-      wip: true
+      wip: false
     },
     {
       icon: '🩹',
       title: 'Primeros Auxilios',
       desc: 'Protocolos básicos de atención, manejo de heridas, fracturas y emergencias en el campo.',
       path: '/primeros-auxilios',
-      wip: true
+      wip: false
     },
     {
       icon: '🍳',
       title: 'Cocina al Fuego',
       desc: 'Recetas y técnicas de cocción al aire libre con lo mínimo y máximo sabor.',
       path: '/cocina',
-      wip: true
+      wip: false
     }
   ];
 

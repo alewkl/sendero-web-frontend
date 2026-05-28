@@ -1,38 +1,91 @@
-<div class="wip-page">
-  <div class="wip-hero">
-    <div class="container">
-      <a routerLink="/" class="breadcrumb">← Inicio</a>
-      <div class="wip-hero-inner">
-        <span class="page-icon">🍳</span>
-        <div>
-          <span class="badge-chip">Área de conocimiento</span>
-          <h1>Cocina al Fuego</h1>
-          <p>Técnicas de cocción al aire libre, recetas de campo y aprovechamiento de recursos naturales comestibles.</p>
-        </div>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <a routerLink="/" class="breadcrumb">← Inicio</a>
+    <div class="page-hero-inner">
+      <span class="page-icon">🍳</span>
+      <div>
+        <span class="badge-chip">Área de conocimiento</span>
+        <h1>Cocina al Fuego</h1>
+        <p>Técnicas de cocción al aire libre, recetas de campo y consejos para cocinar bien con lo mínimo.</p>
       </div>
     </div>
   </div>
-  <div class="wip-body">
-    <div class="container">
-      <div class="wip-card">
-        <div class="wip-icon-wrap">
-          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="40" cy="40" r="36" stroke="var(--gold)" stroke-width="2" stroke-dasharray="8 4"/>
-            <text x="40" y="35" text-anchor="middle" font-size="22" fill="var(--forest-mid)">🚧</text>
-            <text x="40" y="58" text-anchor="middle" font-size="9" fill="var(--text-light)" font-family="Open Sans,sans-serif" font-weight="700" letter-spacing="1">EN CONSTRUCCIÓN</text>
-          </svg>
+</section>
+
+<!-- MÉTODOS -->
+<section class="methods-section">
+  <div class="container">
+    <h2 class="section-title">Métodos de cocción</h2>
+    <p class="section-sub">Cada técnica tiene sus ventajas según el tiempo disponible, los ingredientes y el equipo que llevás.</p>
+    <div class="methods-grid">
+      @for (m of methods; track m.name) {
+        <div class="method-card">
+          <div class="method-top">
+            <span class="method-icon">{{ m.icon }}</span>
+            <div>
+              <h3>{{ m.name }}</h3>
+              <span class="difficulty" [class]="m.levelClass">{{ m.level }}</span>
+            </div>
+          </div>
+          <p>{{ m.desc }}</p>
         </div>
-        <h2>Esta sección está en preparación</h2>
-        <p>Reuniendo recetas, técnicas y consejos para cocinar bien en el campo con el mínimo equipo y sin desperdiciar recursos.</p>
-        <div class="wip-topics">
-          <span>Cocción directa al fuego</span>
-          <span>Hornos de tierra</span>
-          <span>Plantas comestibles</span>
-          <span>Conservación de alimentos en campo</span>
-          <span>Utensilios improvisados</span>
-        </div>
-        <a routerLink="/" class="btn-primary">Volver al inicio</a>
-      </div>
+      }
     </div>
   </div>
-</div>
+</section>
+
+<!-- RECETAS -->
+<section class="recipes-section">
+  <div class="container">
+    <h2 class="section-title">Recetas de campo</h2>
+    <p class="section-sub">Preparaciones simples, nutritivas y replicables con ingredientes de mochila.</p>
+    <div class="recipes-grid">
+      @for (r of recipes; track r.name) {
+        <div class="recipe-card">
+          <div class="recipe-header">
+            <span class="recipe-icon">{{ r.icon }}</span>
+            <div>
+              <h3>{{ r.name }}</h3>
+              <span class="recipe-time">⏱ {{ r.time }}</span>
+            </div>
+          </div>
+          <div class="recipe-body">
+            <div class="ingredients">
+              <span class="recipe-label">Ingredientes</span>
+              <ul>
+                @for (ing of r.ingredients; track ing) {
+                  <li>{{ ing }}</li>
+                }
+              </ul>
+            </div>
+            <div class="recipe-steps">
+              <span class="recipe-label">Preparación</span>
+              <ol>
+                @for (step of r.steps; track step) {
+                  <li>{{ step }}</li>
+                }
+              </ol>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="tips-section">
+  <div class="container">
+    <span class="badge-chip">Consejos prácticos</span>
+    <h2 class="tips-title">Del fuego a la boca</h2>
+    <div class="tips-grid">
+      @for (t of tips; track t.tip) {
+        <div class="tip-card">
+          <span class="tip-icon">{{ t.icon }}</span>
+          <p>{{ t.tip }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
