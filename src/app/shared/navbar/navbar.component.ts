@@ -32,6 +32,6 @@ export class NavbarComponent {
     { path: '/navegacion', label: 'Navegación' },
     { path: '/nudos', label: 'Nudos' },
     { path: '/primeros-auxilios', label: 'Primeros Auxilios' },
-    { path: '/cocina', label: 'Cocina y Fogón' },
+    { path: '/cocina', label: 'Cocina al Fuego' },
   ];
 }
