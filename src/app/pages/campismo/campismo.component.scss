@@ -36,7 +36,7 @@
   position: sticky; top: 70px; z-index: 10;
 }
 
-.tabs-row { display: flex; gap: 0; overflow-x: auto; }
+.tabs-row { display: flex; gap: 0; overflow-x: visible; flex-wrap: wrap; }
 
 .page-tab {
   background: none; border: none; border-bottom: 3px solid transparent;
