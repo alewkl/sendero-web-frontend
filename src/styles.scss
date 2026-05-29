@@ -96,13 +96,104 @@
     &:hover { background: var(--cream-dark) !important; }
   }
 
-  .intro-band p { color: var(--tan-light); }
+  .intro-band p { color: var(--text-mid) !important; }
 
   .search-wrap {
     background: var(--white) !important;
     border-color: var(--tan-light) !important;
     input { color: var(--text-dark) !important; }
   }
+
+  /* ── text-visibility fixes ──────────────────────── */
+
+  /* Navbar: links use --tan-light on hardcoded dark background */
+  .nav-links li a { color: var(--text-mid) !important; }
+
+  /* Footer: links use --tan-light on --forest-dark background */
+  .footer-links ul li a { color: var(--text-mid) !important; }
+  .footer-bottom .container span { color: var(--text-light) !important; }
+
+  /* Hero subtitle: background stays hardcoded dark, --tan-light inverts to near-black */
+  .page-hero-inner p,
+  .wip-hero-inner p { color: var(--text-mid) !important; }
+
+  /* Global section-title uses --forest-dark (≈ black in dark mode) */
+  .section-title { color: var(--forest-pale) !important; }
+  /* Skills-strip variant uses --cream which also inverts */
+  .skills-strip .section-title { color: var(--text-dark) !important; }
+  .skill-item { color: var(--text-mid) !important; }
+
+  /* WIP card: heading and topic badges */
+  .wip-card h2 { color: var(--forest-pale) !important; }
+  .wip-card .wip-topics span {
+    background: rgba(120, 180, 90, 0.14) !important;
+    border-color: rgba(120, 180, 90, 0.28) !important;
+    color: var(--forest-pale) !important;
+  }
+
+  /* Card and section headings that use --forest-dark on card backgrounds */
+  .pillar-card h3, .pillar-card h4,
+  .method-card h3, .method-card h4,
+  .shelter-card h3, .shelter-card h4,
+  .rule-card h3, .rule-card h4,
+  .section-card h3, .section-card h4,
+  .check-card h3, .check-card h4,
+  .knot-card h3, .knot-card h4,
+  .emerg-card h3, .emerg-card h4,
+  .recipe-card h3, .recipe-card h4,
+  .tip-card h3, .tip-card h4,
+  .cloud-card h3, .cloud-card h4,
+  .wind-card h3, .wind-card h4,
+  .nature-card h3, .nature-card h4,
+  .plant-card h3, .plant-card h4,
+  .part-card h3, .part-card h4,
+  .id-rule h4,
+  .priority-card h3, .priority-card h4,
+  .priority-body h3,
+  .topic-header h2,
+  .cta-text h2,
+  .manifesto-text h2,
+  .stat-label { color: var(--forest-pale) !important; }
+
+  /* Dark-section headings: --cream inverts to near-black on --forest-dark background */
+  .rule-text h2,
+  .coming-inner h3,
+  .rules-title,
+  .kit-title { color: var(--text-dark) !important; }
+
+  .rule-label,
+  .coming-inner p { color: var(--text-mid) !important; }
+
+  /* Kit list: --tan-light and --cream both invert to dark on --forest-dark bg */
+  .kit-list li { color: var(--text-mid) !important; }
+  .kit-list li.essential { color: var(--text-dark) !important; }
+  .kit-note h4 { color: var(--text-dark) !important; }
+
+  /* Active filter/tab states: bg (--forest-dark) + text (--cream) both near-black */
+  .filter-tab.active {
+    background: var(--surface-elevated) !important;
+    border-color: var(--forest-pale) !important;
+    color: var(--forest-pale) !important;
+  }
+  .tab-btn.active { color: var(--forest-pale) !important; }
+
+  /* Category header bars: bg (--forest-dark) + text (--cream) both near-black */
+  .cat-title {
+    background: var(--surface-elevated) !important;
+    color: var(--text-dark) !important;
+  }
+
+  /* Trip/type buttons: normal label + active state */
+  .trip-label { color: var(--forest-pale) !important; }
+  .trip-btn.active {
+    background: var(--surface-elevated) !important;
+    border-color: var(--forest-pale) !important;
+  }
+  .trip-btn.active .trip-label { color: var(--forest-pale) !important; }
+  .trip-btn.active .trip-desc { color: var(--text-mid) !important; }
+
+  /* Progress text */
+  .progress-text { color: var(--forest-pale) !important; }
 }
 
 *, *::before, *::after {
